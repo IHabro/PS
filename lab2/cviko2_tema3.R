@@ -1,4 +1,4 @@
-#
+# Vypocet SH, Rozptylu a Smerodatne Odchylky rucne a po krocich
 x = c(5:9)
 x
 
@@ -23,8 +23,9 @@ rozptyl
 
 sqrt(rozptyl)
 
+sum(pravdep[hodnoty > 4])
 
-# Program na vypocet stredni hodnotz, rozptylu a smerodatne odchylky
+# Program na vypocet stredni hodnoty, rozptylu a smerodatne odchylky
 hodnoty= c(0:6)
 hodnoty
 pravdep= choose(6,hodnoty)*(0.49^hodnoty)*(0.51^(6-hodnoty))
@@ -38,7 +39,11 @@ rozptyl
 smerodatnaOdchylka = sqrt(roz)
 smerodatnaOdchylka
 
+# dbinom
+choose(6,hodnoty)*(0.49^hodnoty)*(0.51^(6-hodnoty)) == dbinom(hodnoty, 6, p=0.49)
 
-choose(6,hodnoty)*(0.49^hodnoty)*(0.51^(6-hodnoty)) == pbinom(hodnoty, 6, p=0.49)
-
+# Hranicni hodnoty distribucni funkce F
+# Kumulativne sectu pravdepodobnosti a vytvorim graf pro tyto hodnoty
+F = cumsum(pravdep)
+plot(hodnoty, F, type = "s")
 
